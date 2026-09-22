@@ -1,0 +1,191 @@
+/* WhatsApp Web design tokens.
+   ---------------------------------------------------------------------------
+   Variable names are WhatsApp's own, so each value can be checked against the
+   real client rather than taken on trust. WhatsApp ships no webfont — it asks
+   for Segoe UI first and falls through the platform stack, so matching the
+   stack is what matches the typography. */
+
+:root {
+  color-scheme: light;
+
+  /* surfaces */
+  --app-background:                #f0f2f5;
+  --background-default:            #ffffff;
+  --background-default-hover:      #f5f6f6;
+  --background-default-active:     #f0f2f5;
+  --panel-header-background:       #f0f2f5;
+  --panel-background-deeper:       #f0f2f5;
+  --conversation-panel-background: #efeae2;
+  --drawer-background:             #ffffff;
+  --drawer-background-deep:        #f0f2f5;
+  --search-input-background:       #f0f2f5;
+  --rich-text-panel-background:    #f0f2f5;
+  --system-message-background:     #ffffff;
+
+  /* bubbles */
+  --incoming-background:           #ffffff;
+  --outgoing-background:           #d9fdd3;
+
+  /* ink */
+  --primary:                       #111b21;
+  --secondary:                     #667781;
+  --secondary-stronger:            #3b4a54;
+  --secondary-lighter:             #8696a0;
+  --panel-header-icon:             #54656f;
+  --bubble-meta:                   rgba(17,27,33,.45);
+  --placeholder:                   #8696a0;
+
+  /* brand and status */
+  --teal-primary:                  #008069;
+  --teal-light:                    #25d366;
+  --icon-ack:                      #8696a0;
+  --icon-ack-inv:                  #53bdeb;
+  --link:                          #027eb5;
+  --unread-marker-background:      #25d366;
+  --unread-marker-text:            #ffffff;
+
+  /* lines, shadows, misc */
+  --border-list:                   #e9edef;
+  --border-stronger:               #d1d7db;
+  --avatar-background:             #dfe5e7;
+  --avatar-ink:                    #ffffff;
+  --shadow-rgb:                    11,20,26;
+  --quote-background:              rgba(11,20,26,.04);
+  --wave:                          rgba(17,27,33,.25);
+  --wave-played:                   #8696a0;
+  --doodle-ink:                    #0b1419;
+  --doodle-opacity:                .06;
+  --scrollbar:                     rgba(11,20,26,.2);
+
+  --font: "Segoe UI", "Helvetica Neue", Helvetica, "Lucida Grande", Arial,
+          Ubuntu, Cantarell, "Fira Sans", "Noto Sans", "Noto Sans Arabic",
+          sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+          "Noto Color Emoji";
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+               "Liberation Mono", monospace;
+
+  --bar-height: 59px;
+  --row-height: 72px;
+}
+
+/* Declared twice on purpose: once for the system preference, so the page is
+   already the right colour before any script runs, and once for an explicit
+   choice made in the UI. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --app-background:                #0b141a;
+    --background-default:            #111b21;
+    --background-default-hover:      #202c33;
+    --background-default-active:     #2a3942;
+    --panel-header-background:       #202c33;
+    --panel-background-deeper:       #111b21;
+    --conversation-panel-background: #0b141a;
+    --drawer-background:             #111b21;
+    --drawer-background-deep:        #0b141a;
+    --search-input-background:       #202c33;
+    --rich-text-panel-background:    #202c33;
+    --system-message-background:     #182229;
+    --incoming-background:           #202c33;
+    --outgoing-background:           #005c4b;
+    --primary:                       #e9edef;
+    --secondary:                     #8696a0;
+    --secondary-stronger:            #d1d7db;
+    --secondary-lighter:             #8696a0;
+    --panel-header-icon:             #aebac1;
+    --bubble-meta:                   rgba(233,237,239,.6);
+    --placeholder:                   #8696a0;
+    --teal-primary:                  #00a884;
+    --teal-light:                    #00a884;
+    --icon-ack:                      #8696a0;
+    --icon-ack-inv:                  #53bdeb;
+    --link:                          #53bdeb;
+    --unread-marker-background:      #00a884;
+    --unread-marker-text:            #111b21;
+    --border-list:                   #222d34;
+    --border-stronger:               #313d45;
+    --avatar-background:             #6a7175;
+    --avatar-ink:                    #cfd4d6;
+    --shadow-rgb:                    0,0,0;
+    --quote-background:              rgba(255,255,255,.06);
+    --wave:                          rgba(233,237,239,.28);
+    --wave-played:                   #8696a0;
+    --doodle-ink:                    #e9edef;
+    --doodle-opacity:                .045;
+    --scrollbar:                     rgba(233,237,239,.2);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --app-background:                #0b141a;
+  --background-default:            #111b21;
+  --background-default-hover:      #202c33;
+  --background-default-active:     #2a3942;
+  --panel-header-background:       #202c33;
+  --panel-background-deeper:       #111b21;
+  --conversation-panel-background: #0b141a;
+  --drawer-background:             #111b21;
+  --drawer-background-deep:        #0b141a;
+  --search-input-background:       #202c33;
+  --rich-text-panel-background:    #202c33;
+  --system-message-background:     #182229;
+  --incoming-background:           #202c33;
+  --outgoing-background:           #005c4b;
+  --primary:                       #e9edef;
+  --secondary:                     #8696a0;
+  --secondary-stronger:            #d1d7db;
+  --secondary-lighter:             #8696a0;
+  --panel-header-icon:             #aebac1;
+  --bubble-meta:                   rgba(233,237,239,.6);
+  --placeholder:                   #8696a0;
+  --teal-primary:                  #00a884;
+  --teal-light:                    #00a884;
+  --icon-ack:                      #8696a0;
+  --icon-ack-inv:                  #53bdeb;
+  --link:                          #53bdeb;
+  --unread-marker-background:      #00a884;
+  --unread-marker-text:            #111b21;
+  --border-list:                   #222d34;
+  --border-stronger:               #313d45;
+  --avatar-background:             #6a7175;
+  --avatar-ink:                    #cfd4d6;
+  --shadow-rgb:                    0,0,0;
+  --quote-background:              rgba(255,255,255,.06);
+  --wave:                          rgba(233,237,239,.28);
+  --wave-played:                   #8696a0;
+  --doodle-ink:                    #e9edef;
+  --doodle-opacity:                .045;
+  --scrollbar:                     rgba(233,237,239,.2);
+}
+
+/* The chat wallpaper is the one thing deliberately not copied: WhatsApp's
+   doodle is their artwork. This is an original pattern in the same idiom, at
+   their density and opacity, masked so it takes the theme's ink colour. */
+:root {
+  --doodle: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'>\
+<g fill='none' stroke='%23000' stroke-width='1.15' stroke-linecap='round' stroke-linejoin='round'>\
+<path d='M8 14c0-3 2.4-5.4 5.4-5.4h11.2c3 0 5.4 2.4 5.4 5.4v5.4c0 3-2.4 5.4-5.4 5.4h-8.2l-4.6 3.6v-3.6h-3.8C10.4 24.8 8 22.4 8 19.4z'/>\
+<circle cx='55' cy='16' r='6.4'/><path d='M55 12.2v4.2l2.8 1.8'/>\
+<path d='M82 9h14.5v10.5H82z'/><path d='M82 12.5h14.5'/>\
+<path d='M116 10l4.4-4.4 4.4 4.4-4.4 4.4z'/>\
+<path d='M12 46h12.6v9H12z'/><path d='M14.8 46v-3.6h7v3.6'/>\
+<path d='M42 41c4 0 7.2 3.2 7.2 7.2S46 55.4 42 55.4s-7.2-3.2-7.2-7.2S38 41 42 41z'/><path d='M38.8 48.2l2.2 2.2 4.2-4.6'/>\
+<path d='M70 54l4.5-12.6h9L79 54z'/>\
+<path d='M100 43c3.6 0 6.4 2.8 6.4 6.4s-2.8 6.4-6.4 6.4h-6.4v-6.4c0-3.6 2.8-6.4 6.4-6.4z'/>\
+<path d='M120 44h13M120 49h9M120 54h11'/>\
+<path d='M8 82c3.2-4 8.2-4 11.4 0'/><path d='M8 87.4c3.2-4 8.2-4 11.4 0'/>\
+<path d='M38 79l4.6-4.6 4.6 4.6-4.6 11z'/>\
+<circle cx='74' cy='84' r='5.4'/><path d='M71.3 84h5.4M74 81.3v5.4'/>\
+<path d='M98 78h12.6v7.2H98z'/><circle cx='101.6' cy='89' r='2.3'/><circle cx='107.8' cy='89' r='2.3'/>\
+<path d='M126 76l3.6 7.2-3.6 7.2-3.6-7.2z'/>\
+<path d='M10 116h11l-1.8 11h-7.4z'/>\
+<path d='M40 114c0-3 2.4-5.4 5.4-5.4s5.4 2.4 5.4 5.4-2.4 5.4-5.4 5.4h-5.4z'/>\
+<path d='M72 112h12.6M72 117.4h8'/>\
+<path d='M104 110l3.6 7.2-3.6 7.2-3.6-7.2z'/>\
+<circle cx='128' cy='116' r='6'/><path d='M128 112v4l2.6 1.8'/>\
+<path d='M22 132c3 0 5.4 2.4 5.4 5.4'/><path d='M56 130h10.6v6H56z'/>\
+<path d='M88 131l3.4 3.4-3.4 3.4-3.4-3.4z'/>\
+</g></svg>");
+}

@@ -121,7 +121,10 @@ def _embed_json(payload: dict) -> str:
 
 def render_html(payload: dict) -> str:
     shell = (ASSETS / "shell.html").read_text(encoding="utf-8")
-    css = (ASSETS / "app.css").read_text(encoding="utf-8")
+    # Tokens first: the component rules below them consume the variables.
+    css = "\n".join(
+        (ASSETS / name).read_text(encoding="utf-8") for name in ("tokens.css", "app.css")
+    )
     js = (ASSETS / "app.js").read_text(encoding="utf-8")
 
     title = payload.get("title") or "WhatsApp archive"

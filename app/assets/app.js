@@ -307,22 +307,33 @@
            '<span class="file__dl">' + GLYPH.download + "</span></a>";
   }
 
+  // WhatsApp reserves room for the timestamp by ending the last text line with
+  // an invisible spacer, then parking the meta absolutely in that gap. The
+  // spacer has to sit *inside* the text flow or the meta overlaps the words.
+  var PAD = '<span class="bubble__pad"></span>';
+
   function bodyHtml(m, mediaOnly) {
+    var pad = mediaOnly ? "" : PAD;   // media-only bubbles stamp on the picture
     var kind = KIND[m.k] || "text";
     if (kind === "deleted") {
       return '<div class="bubble__text">' + GLYPH.deleted +
-             "<span>" + esc(m.b || "This message was deleted") + "</span></div>";
+             "<span>" + esc(m.b || "This message was deleted") + "</span>" + pad + "</div>";
     }
     if (kind === "call") {
       return '<div class="bubble__text locmap">' + GLYPH.call +
-             "<span>" + esc(m.b || "Call") + "</span></div>";
+             "<span>" + esc(m.b || "Call") + "</span>" + pad + "</div>";
     }
     var out = "";
     if (m.a) out += attachmentHtml(m, mediaOnly);
     if (kind === "location" && m.b) {
-      out += '<div class="bubble__text locmap">' + GLYPH.location + "<span>" + formatBody(m.b) + "</span></div>";
+      out += '<div class="bubble__text locmap">' + GLYPH.location +
+             "<span>" + formatBody(m.b) + "</span>" + pad + "</div>";
     } else if (m.b) {
-      out += '<div class="bubble__text' + (m.a ? " att__caption" : "") + '">' + formatBody(m.b) + "</div>";
+      out += '<div class="bubble__text' + (m.a ? " att__caption" : "") + '">' +
+             formatBody(m.b) + pad + "</div>";
+    } else if (pad) {
+      // An attachment with no caption still needs a line to hold the time.
+      out += '<div class="bubble__text bubble__text--stamp">' + pad + "</div>";
     }
     return out;
   }
@@ -359,7 +370,7 @@
     var head = (runStart && chat.group && who && !m.o)
       ? '<span class="bubble__who" style="color:' + nameColor(who) + '">' + esc(who) + "</span>"
       : "";
-    var tail = mediaOnly ? "" : ('<span class="bubble__pad"></span>' + metaHtml(m));
+    var tail = mediaOnly ? "" : metaHtml(m);
     var more = sticker ? "" : '<span class="bubble__more">' +
       '<svg viewBox="0 0 20 20"><path d="M5 8l5 5 5-5"/></svg></span>';
 
