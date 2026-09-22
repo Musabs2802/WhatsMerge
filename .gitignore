@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.vscode/
+.DS_Store
+
+# Your WhatsApp exports. Never commit real chat data.
+/exports/*
+!/exports/.gitkeep
+!/exports/README.md
+
+# Generated archives and their media folders.
+/output/
+/out/
+/sample/
+
+# NOTE: no blanket *.html rule — app/assets/shell.html is source.
